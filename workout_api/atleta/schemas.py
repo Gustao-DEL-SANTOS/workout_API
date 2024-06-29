@@ -1,5 +1,8 @@
 from typing import Annotated
+
 from pydantic import BaseModel, Field, PositiveFloat
+
+from workout_api.contrib.schemas import OutMixin
 
 
 class Atleta(BaseModel):
@@ -11,3 +14,11 @@ class Atleta(BaseModel):
     peso: Annotated[PositiveFloat, Field(description="PESO do atleta", example="75.5")]
     altura: Annotated[PositiveFloat, Field(description="ALTURA do atleta", example="1.69")]
     sexo: Annotated[str, Field(description="SEXO do atleta", example="M", max_length=1)]
+
+
+
+class AtletaIn(BaseModel):
+    pass
+
+class AtletaOut(AtletaIn, OutMixin):
+    pass
